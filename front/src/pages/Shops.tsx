@@ -67,7 +67,6 @@ const ShopPage: React.FC = () => {
                     />
                 ))}
             </div>
-            <Cart/>
         </div>
     );
 };
