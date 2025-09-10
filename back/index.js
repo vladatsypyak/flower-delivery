@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import shopRoutes from"./routes/shops.js";
+import productRoutes from "./routes/products.js";
+
 
 
 dotenv.config();
@@ -34,4 +36,6 @@ app.get("/", (req, res) => {
     res.send("Hello, Express!");
 });
 app.use("/api/shops", shopRoutes);
+app.use("/api/products", productRoutes);
+
 
