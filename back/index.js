@@ -1,11 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import shopRoutes from"./routes/shops.js";
+
 
 dotenv.config();
 
 const app = express();
+import cors from "cors";
+
 app.use(express.json());
+app.use(cors());
+
 
 const startServer = async () => {
     try {
@@ -27,3 +33,5 @@ startServer();
 app.get("/", (req, res) => {
     res.send("Hello, Express!");
 });
+app.use("/api/shops", shopRoutes);
+
