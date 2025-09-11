@@ -2,7 +2,7 @@ import React, {useMemo} from "react";
 import {useCart} from "../../hooks/useCart";
 
 const Cart: React.FC = () => {
-    const { cart, removeFromCart } = useCart();
+    const { cart, removeFromCart, removeOne, addOne } = useCart();
     const total = useMemo(
         () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
         [cart]
@@ -20,6 +20,18 @@ const Cart: React.FC = () => {
                             onClick={() => removeFromCart(item._id)}
                         >
                             Remove
+                        </button>
+                        <button
+                            className="text-blue-500"
+                            onClick={() => removeOne(item._id)}
+                        >
+                            Minus
+                        </button>
+                        <button
+                            className="text-blue-500"
+                            onClick={() => addOne(item._id)}
+                        >
+                            Plus
                         </button>
                     </div>
 

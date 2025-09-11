@@ -35,6 +35,30 @@ export const useCart = () => {
     const removeFromCart = (productId: string) => {
         setCart((prev) => prev.filter((item) => item._id !== productId));
     };
+    const removeOne = (productId: string) => {
+        setCart((prev) => {
+               return prev
+                    .map((item) =>
+                        item._id === productId
+                            ? { ...item, quantity: item.quantity - 1 }
+                            : item
+                    )
+                    .filter((item) => item.quantity > 0)
+            }
+        );
+    };
+    const addOne = (productId: string) => {
+        setCart((prev) => {
+                return prev
+                    .map((item) =>
+                        item._id === productId
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item
+                    )
+            }
+        );
+    };
 
-    return { cart, addToCart, removeFromCart };
+
+    return { cart, addToCart, removeFromCart, addOne, removeOne };
 };
