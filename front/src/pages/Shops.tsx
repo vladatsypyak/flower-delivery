@@ -56,13 +56,14 @@ const ShopPage: React.FC = () => {
     };
 
     return (
-        <div className="flex p-4 gap-6">
+        <div className="flex p-4 gap-6 ">
             <ShopList shops={shops} selectedShop={selectedShop} onSelect={setSelectedShop} />
-            <div className="grid grid-cols-2 gap-4 flex-1 overflow-y-auto">
+            <div className="flex flex-wrap gap-4 overflow-y-auto">
                 {flowers?.map((flower) => (
                     <FlowerCard
                         key={flower.name + Math.random()}
                         name={flower.name}
+                        item={flower}
                         onAddToCart={() => addToCart(flower)}
                     />
                 ))}

@@ -12,13 +12,13 @@ const ShopList: React.FC<ShopListProps> = ({ shops, selectedShop, onSelect }) =>
 
     return (
         shops ? (
-            <div className="flex flex-col gap-2 w-40">
+            <div className="flex flex-col gap-2 w-[300px] shrink-0">
                 {shops.map((shop) => (
                     <button
                         key={shop._id}
                         onClick={() => onSelect(shop)}
-                        className={`px-4 py-2 rounded border ${
-                            selectedShop?._id === shop._id ? "bg-gray-300" : "bg-white"
+                        className={`px-6 py-[30px] rounded border ${
+                            selectedShop?._id === shop._id ? "bg-emerald-400 text-white font-bold" : "bg-white"
                         }`}
                     >
                         {shop.name}
