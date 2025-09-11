@@ -3,8 +3,7 @@ import { CartItem, Product } from "../types";
 
 export const useCart = () => {
     const [cart, setCart] = useState<CartItem[]>([]);
-    console.log(cart)
-    console.log("workig")
+
 
     useEffect(() => {
         const storedCart = localStorage.getItem("cart");
@@ -15,7 +14,7 @@ export const useCart = () => {
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
-        console.log(localStorage.getItem("cart"))
+        // console.log(localStorage.getItem("cart"))
     }, [cart]);
 
     const addToCart = (product: Product) => {

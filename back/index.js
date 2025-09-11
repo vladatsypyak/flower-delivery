@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import shopRoutes from"./routes/shops.js";
 import productRoutes from "./routes/products.js";
+import ordersRoutes from "./routes/orders.js";
+
 
 
 
@@ -37,5 +39,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/shops", shopRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", ordersRoutes);
+
 
 
