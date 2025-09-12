@@ -1,23 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import { Heart } from "lucide-react";
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "../ui/card"
 import {Product} from "@/types";
 
 interface FlowerCardProps {
     name: string;
-    onAddToCart?: () => void;
+    onAddToCart: () => void;
     item: Product
 }
 
 const FlowerCard: React.FC<FlowerCardProps> = ({ name, onAddToCart, item }) => {
+    const [isAdded, setAdded] = useState(false)
+    const handleAddToCart = () => {
+        setAdded(true)
+
+        onAddToCart()
+    }
     return (
         <Card className="border rounded p-4 flex flex-col items-center relative w-[300px]">
             <div className="absolute top-2 right-2">
@@ -28,15 +29,22 @@ const FlowerCard: React.FC<FlowerCardProps> = ({ name, onAddToCart, item }) => {
             </CardContent>
             <span className="mb-2">{name}</span>
             <div className={"flex justify-between items-center mt-auto w-full"}>
-                <p className={"font-semibold"}>{item.price}$</p>
-                {onAddToCart && (
+                <p className={"font-semibold"}>{item.price} <span className={"font-normal"}>UAH</span></p>
+                {isAdded ?
+                    <button disabled
+                    className="px-3 py-1 ml-auto bg-emerald-400 text-white rounded  "
+                >
+                        {"Added"}
+                    </button> :
                     <button
-                        onClick={onAddToCart}
-                        className="px-3 py-1 ml-auto bg-emerald-500 text-white rounded hover:bg-emerald-600"
-                    >
-                        Add to Cart
-                    </button>
-                )}
+                    onClick={handleAddToCart}
+                    className="px-3 py-1 ml-auto bg-emerald-500 text-white rounded hover:bg-emerald-600"
+                >
+                        {"Add to Cart"}
+                </button>}
+
+
+
             </div>
 
         </Card>

@@ -37,7 +37,7 @@ const CartPage: React.FC = () => {
         }
     }
     return (
-        <div className={"w-[1000px] mx-auto  p-4"}>
+        <div className={"w-[1200px] mx-auto  p-4"}>
             <div className="flex  gap-6  ">
                 <OrderForm onSubmit={handleOrderSubmit} />
 
@@ -49,7 +49,7 @@ const CartPage: React.FC = () => {
             </div>
 
             <div className={"flex justify-end gap-[40px] items-center mt-4 "}>
-                <span className={"font-semibold"}>Total: <span>{total}</span>$</span>
+                <span className={"font-semibold"}>Total: <span>{total}</span>UAH</span>
 
                 <button
                     type="submit"

@@ -60,7 +60,7 @@ const ShopPage: React.FC = () => {
                     <div className="flex flex-wrap gap-4 overflow-y-auto">
                         {flowers?.map((flower) => (
                             <FlowerCard
-                                key={flower.name + Math.random()}
+                                key={flower._id}
                                 name={flower.name}
                                 item={flower}
                                 onAddToCart={() => addToCart(flower)}
