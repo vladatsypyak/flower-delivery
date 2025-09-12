@@ -5,6 +5,7 @@ type OrderFormData = {
     email: string;
     phone: string;
     address: string;
+    name: string
 };
 
 interface OrderFormProps {
@@ -23,9 +24,9 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
             <form id="order-form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col bg-emerald-400 gap-3 w-[400px] rounded-md border border-green-100 px-4 py-3">
                 <div>
                     <input
-                        type="email"
-                        placeholder="Email"
-                        {...register("email", { required: "Email is required" })}
+                        type="text"
+                        placeholder="Name"
+                        {...register("name", { required: "Name is required" })}
                         className="  p-2 w-full rounded-md focus:outline-emerald-600"
                     />
                     {errors.email && <p className="text-red-500  text-sm">{errors.email.message}</p>}
