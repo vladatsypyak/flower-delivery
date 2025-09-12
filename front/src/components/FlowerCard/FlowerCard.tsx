@@ -19,15 +19,12 @@ interface FlowerCardProps {
 
 const FlowerCard: React.FC<FlowerCardProps> = ({ name, onAddToCart, item }) => {
     return (
-        <Card className="border rounded p-3 flex flex-col items-center relative w-[300px]">
+        <Card className="border rounded p-4 flex flex-col items-center relative w-[300px]">
             <div className="absolute top-2 right-2">
-                <Heart className="w-5 h-5 text-gray-400 cursor-pointer" />
+                <Heart className="w-5 h-5 text-gray-400 cursor-pointer hover:text-emerald-400" />
             </div>
-            {/*<div className="w-24 h-24 bg-gray-200 mb-2 flex items-center justify-center">*/}
-            {/*    <span>{name[0]}</span>*/}
-            {/*</div>*/}
             <CardContent>
-                <img className={"max-h-[200px]"} src={item.imageUrl} alt={item.name}/>
+                <img className={"max-h-[180px]"} src={item.imageUrl} alt={item.name}/>
             </CardContent>
             <span className="mb-2">{name}</span>
             <div className={"flex justify-between items-center mt-auto w-full"}>

@@ -9,7 +9,7 @@ import {ShoppingBag} from "lucide-react";
 
 function App() {
   return (
-    <div className="App max-w-[1600px] mx-auto">
+    <div className="App max-w-[1600px] mx-auto select-none">
         <header className="App-header flex gap-7 justify-end p-5 max-w-[1200px] mx-auto">
             <div>
                 <Link to="/" className="text-emerald-800 hover:underline focus:text-emerald-400 focus:font-semibold ">
