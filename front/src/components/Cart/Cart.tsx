@@ -1,46 +1,56 @@
-import React, {useMemo} from "react";
-import {useCart} from "../../hooks/useCart";
+import React from "react";
+import {CartItem} from "@/types";
+import { Trash2, Plus, Minus } from "lucide-react";
 
-const Cart: React.FC = () => {
-    const { cart, removeFromCart, removeOne, addOne } = useCart();
-    const total = useMemo(
-        () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-        [cart]
-    );    return (
-        <div className="border p-4 w-80">
-            <h2 className="text-xl mb-2">Cart</h2>
-            {cart.length === 0 ? (
+
+interface CartProps {
+    products: CartItem[],
+    total: number,
+    removeFromCart: (id: string)=> void,
+    removeOne: (id: string)=> void,
+    addOne: (id: string)=> void
+
+
+}
+
+const Cart: React.FC<CartProps> = ({products, total, removeFromCart, removeOne, addOne }) => {
+
+    return (
+        <div className="p-4 w-[800px]  border border-green-100 overflow-y-auto rounded-md">
+            {products.length === 0 ? (
                 <p>Cart is empty</p>
             ) : (
-                cart.map((item) => (
-                    <div key={item._id} className="flex justify-between mb-2">
-                        <span>{item.name} x {item.quantity}</span>
-                        <button
-                            className="text-red-500"
-                            onClick={() => removeFromCart(item._id)}
-                        >
-                            Remove
-                        </button>
-                        <button
-                            className="text-blue-500"
-                            onClick={() => removeOne(item._id)}
-                        >
-                            Minus
-                        </button>
-                        <button
-                            className="text-blue-500"
-                            onClick={() => addOne(item._id)}
-                        >
-                            Plus
-                        </button>
+                products.map((item) => (
+                    <div key={item._id} className="flex items-center  justify-between mb-2 bg-white border-b border-green-100 p-3">
+                        <p className={"w-[38%]"}>{item.name} </p>
+                        <p > x{item.quantity}</p>
+
+                      <div className={"flex gap-2 "}>
+                          <button
+                              className="text-blue-500"
+                              onClick={() => removeOne(item._id)}
+                          >
+                              <Minus size={24}/>
+
+                          </button>
+                          <button
+                              className="text-blue-500"
+                              onClick={() => addOne(item._id)}
+                          >
+                              <Plus size={24}/>
+                          </button>
+                          <button
+                              className="text-red-500"
+                              onClick={() => removeFromCart(item._id)}
+                          >
+                              <Trash2 size={24} />                        </button>
+                      </div>
                     </div>
 
                 ))
             )}
-            <div className="border-t mt-2 pt-2 flex justify-between font-bold">
-                <span>Total:</span>
-                <span>{total}</span>
-            </div>
+
+
         </div>
     );
 };

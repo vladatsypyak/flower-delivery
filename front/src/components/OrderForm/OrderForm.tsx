@@ -20,13 +20,22 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
 
     return (
         <>
-            <form id="order-form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 max-w-md">
+            <form id="order-form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col bg-emerald-400 gap-3 w-[400px] rounded-md border border-green-100 px-4 py-3">
                 <div>
                     <input
                         type="email"
                         placeholder="Email"
                         {...register("email", { required: "Email is required" })}
-                        className="border p-2 w-full rounded"
+                        className="  p-2 w-full rounded-md focus:outline-emerald-600"
+                    />
+                    {errors.email && <p className="text-red-500  text-sm">{errors.email.message}</p>}
+                </div>
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        {...register("email", { required: "Email is required" })}
+                        className=" p-2 w-full rounded-md focus:outline-emerald-600"
                     />
                     {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                 </div>
@@ -39,7 +48,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
                             required: "Phone number is required",
                             pattern: { value: /^[0-9+\- ]+$/, message: "Invalid phone number" },
                         })}
-                        className="border p-2 w-full rounded"
+                        className=" p-2 w-full rounded-md focus:outline-emerald-600"
                     />
                     {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                 </div>
@@ -49,7 +58,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
                         type="text"
                         placeholder="Delivery address"
                         {...register("address", { required: "Address is required" })}
-                        className="border p-2 w-full rounded"
+                        className=" p-2 w-full rounded-md focus:outline-emerald-600"
                     />
                     {errors.address && <p className="text-red-500 text-sm">{errors.address.message}</p>}
                 </div>
