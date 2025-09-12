@@ -5,6 +5,8 @@ import CartPage from "./pages/Cart";
 import { Link } from "react-router-dom";
 import {ShoppingBag} from "lucide-react";
 
+export const apiUrl = process.env.REACT_APP_API_URL;
+
 
 function App() {
   return (

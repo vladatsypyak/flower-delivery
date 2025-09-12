@@ -3,6 +3,7 @@ import ShopList from "../components/ShopList/ShopList";
 import FlowerCard from "../components/FlowerCard/FlowerCard";
 import {Product} from "../types";
 import {useCart} from "../hooks/useCart";
+import {apiUrl} from "../App";
 
 export interface Shop {
     _id: string;
@@ -22,7 +23,7 @@ const ShopPage: React.FC = () => {
     const [selectedShop, setSelectedShop] = useState(shops[0]);
     const [flowers, setFlowers] = useState<Product[]>([])
     useEffect(() => {
-        fetch("http://localhost:3000/api/shops")
+        fetch(`${apiUrl}/api/shops`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
@@ -37,7 +38,7 @@ const ShopPage: React.FC = () => {
     }, []);
     useEffect(() => {
         if (selectedShop) {
-            fetch(`http://localhost:3000/api/products/${selectedShop?._id}`)
+            fetch(`${apiUrl}/api/products/${selectedShop?._id}`)
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data)

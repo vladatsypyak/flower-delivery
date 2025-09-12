@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useMemo} from "react";
+import React, { useMemo} from "react";
 import OrderForm from "../components/OrderForm/OrderForm";
 
 import Cart from "../components/Cart/Cart";
 import {useCart} from "../hooks/useCart";
-import it from "node:test";
+import {apiUrl} from "../App";
 
 
 
@@ -23,7 +23,7 @@ const CartPage: React.FC = () => {
             return
         }
 
-        const res = await fetch("http://localhost:3000/api/orders", {
+        const res = await fetch(`${apiUrl}/api/orders`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...data, items: items , total: 100 }),
