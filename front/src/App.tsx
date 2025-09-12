@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 import Shops from "./pages/Shops";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import CartPage from "./pages/Cart";
 import { Link } from "react-router-dom";
 import {ShoppingBag} from "lucide-react";
